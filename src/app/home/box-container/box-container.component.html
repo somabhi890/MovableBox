@@ -1,0 +1,17 @@
+<div class="box-container-area">
+    <div *ngFor="let box of boxesList;let ind=index;" [style.backgroundColor]="box?.color" 
+    [style.zIndex]="ind" [style.left]="box?.x+'px'" [style.top]="box?.y +'px'" 
+    [style.borderColor]="(box?.selected)?'blue':'black'" class="movable-box" draggable="true" 
+    (drag)="moveSelected($event,ind)" (click)="selectBox(ind)" tabindex="0" (keydown)="moveboxKeyboard($event)">{{box?.name}}</div>
+</div>
+
+
+
+<div class="row" style="margin-top: 2vh;">
+    <div class="col-8" style="text-align: left;">
+        <button mat-raised-button style="background-color: blue;color:white" (click)="addBox()">Add Box</button>
+    </div>
+    <div class="col-4">
+        <mat-slide-toggle [checked]="keyboradBlocked" (change)="toggleKeyboardInput($event)">Disable Keyboard Control</mat-slide-toggle>
+    </div>
+</div>
